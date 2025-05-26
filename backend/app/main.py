@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.exc import SQLAlchemyError
 from app.core.database import engine, get_db
 from app.models import category, post, summary  # 모든 모델 import
-from app.api import posts, categories
+from app.api import posts, categories, llm
 from app.core.config import settings
 from app.schemas import HealthCheck
 from datetime import datetime
@@ -32,6 +32,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+app.include_router(llm.router, prefix="/api/v1")
 
 # 데이터베이스 테이블 생성
 @app.on_event("startup")
