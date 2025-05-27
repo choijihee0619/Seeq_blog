@@ -6,7 +6,7 @@
 from .category import Category
 from .post import Post, PostStatus
 from .summary import Summary  
-from .tag import Tag, post_tags
+from .tag import Tag
 
 # 모든 모델을 __all__에 등록
 __all__ = [
